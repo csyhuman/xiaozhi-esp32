@@ -5,6 +5,7 @@
 #include "application.h"
 #include "button.h"
 #include "config.h"
+#include "generic_tools.h"
 #include "mcp_server.h"
 #include "lamp_controller.h"
 #include "led/single_led.h"
@@ -148,8 +149,11 @@ private:
     }
 
     // 物联网初始化，逐步迁移到 MCP 协议
-    void InitializeTools() {
+        void InitializeTools() {
         static LampController lamp(LAMP_GPIO);
+
+        static GenericTools generic;
+        generic.Register();
     }
 
 public:
