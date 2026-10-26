@@ -183,6 +183,7 @@ private:
         camera_ = new EspVideo(video_config);
     }
 
+    // 通用外设 MCP 工具：gpio.write/read, adc.read, pwm.set, servo.set, i2c.read/write
     void InitializeTools() {
         static GenericTools generic;
         generic.Register();
