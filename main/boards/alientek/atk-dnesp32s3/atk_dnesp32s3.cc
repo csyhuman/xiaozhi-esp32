@@ -4,6 +4,7 @@
 #include "application.h"
 #include "button.h"
 #include "config.h"
+#include "generic_tools.h"
 #include "i2c_device.h"
 #include "led/single_led.h"
 #include "esp_video.h"
@@ -182,6 +183,11 @@ private:
         camera_ = new EspVideo(video_config);
     }
 
+    void InitializeTools() {
+        static GenericTools generic;
+        generic.Register();
+    }
+
 public:
     atk_dnesp32s3() : boot_button_(BOOT_BUTTON_GPIO) {
         InitializeI2c();
@@ -189,6 +195,7 @@ public:
         InitializeSt7789Display();
         InitializeButtons();
         InitializeCamera();
+        InitializeTools();
     }
 
     virtual Led* GetLed() override {
